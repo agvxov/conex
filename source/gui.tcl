@@ -14,7 +14,7 @@ if {![info exists ::WRAPPED]} {
 }
 
 # --- Init UI ---
-wm title . "Regex Builder"
+wm title . "Conex - regex builder"
 
 option add *Font "TkDefaultFont 20"
 
@@ -47,6 +47,7 @@ text .o.text_input -width 40 -height 5
 pack .o.text_input -fill both -expand 1
 
 .o.text_input tag configure true  -background lightgreen
+.o.text_input tag configure match -background yellow
 .o.text_input tag configure false -background red
 
 # --- Logic ---
