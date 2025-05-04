@@ -6,7 +6,7 @@ SOURCE.d := source/
 OBJECT.d := object/
 LIB.d	 := library/
 
-SOURCE := main.cpp tcl_tk.c
+SOURCE := main.cpp middleware.cpp tcl_tk.c
 OBJECT := ${SOURCE}
 OBJECT := $(subst .cpp,.o,${OBJECT})
 OBJECT := $(subst .c,.o,${OBJECT})

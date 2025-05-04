@@ -2,6 +2,7 @@
 #include <pthread.h>
 #include <tcl.h>
 #include <tk.h>
+#include "middleware.h"
 
 #define TCL_ARGS \
     [[maybe_unused]] ClientData clientData, \
@@ -11,13 +12,6 @@
 
 #define TCL_EASY_CREATE_COMMAND(c) \
     Tcl_CreateCommand(interp, #c, Tcl_ ## c, (ClientData)NULL, (void (*)(void*))NULL);
-
-extern void put_regex(const char * const s);
-extern void put_input(const char * const s);
-extern void put_engine(const char * const s);
-extern char * pull_results(void);
-extern char * pull_compile_error(void);
-extern char * pull_engines(void);
 
 static
 int Tcl_cPutRegex(TCL_ARGS) {
