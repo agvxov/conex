@@ -79,7 +79,16 @@ void tcl_run(void) {
     TCL_EASY_CREATE_COMMAND(cGetEngines);
     TCL_EASY_CREATE_COMMAND(cGetCompileError);
 
-    int result = Tcl_EvalFile(interp, "source/gui.tcl");
+    int result;
+  #if DEBUG
+    result = Tcl_EvalFile(interp, "source/gui.tcl");
+  #else
+    const char script[] = {
+        #embed "gui.tcl"
+    };
+    result = Tcl_Eval(interp, script);
+  #endif
+
     if (result == TCL_ERROR) {
         fprintf(stderr, "Tcl script execution failed: %s\n", Tcl_GetStringResult(interp));
         exit(1);
